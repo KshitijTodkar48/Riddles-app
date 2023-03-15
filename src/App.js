@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { getRiddles } from "./components/Riddles" ;
+import { useState,useEffect } from 'react';
+import Card from './components/Card';
 
 function App() {
+
+  const [data,setData] = useState(null) ;
+
+  useEffect(()=>{
+    getRiddles().then((riddles) => {
+      console.log(riddles) ;
+      setData(riddles) ;}) ;
+  },[])
+
+  const nextRiddle=()=>{
+    getRiddles().then((riddles)=>{
+      console.log(riddles);
+      setData(riddles) ;}) ;
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        data ? <>
+        <Card riddle = {data.riddle} answer = {data.answer}/>
+        <button className="button-next" onClick={nextRiddle}>Next riddle</button>
+        </> : <> </>
+      } 
     </div>
   );
 }
