@@ -20,14 +20,25 @@ function App() {
   }
 
   return (
+    <>
     <div className="App">
+
+      <div className="sidestuff">
+        <div id='first'> Can you </div>
+        <div id='second'> answer ?</div>
+      </div>
+
+      <div className="App-container">
       {
         data ? <>
         <Card riddle = {data.riddle} answer = {data.answer}/>
         <button className="button-next" onClick={nextRiddle}>Next riddle</button>
         </> : <> </>
       } 
+      </div>
     </div>
+
+    </>
   );
 }
 
