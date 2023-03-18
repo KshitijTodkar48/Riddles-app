@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { BtnContext } from "../context/NextBtn";
 
 const Card = (props) => {
     
-    const[val,setVal] = useState(false) ;
+    const btnState = useContext(BtnContext) ;
 
     const clickhandler = () =>{
-        setVal(true) ;
+        btnState.setVal(true) ;
     }
 
     return(
@@ -13,7 +14,7 @@ const Card = (props) => {
         <div className="card">
             <h2>{props.riddle}</h2>
             {
-                val ? <h2>{props.answer}</h2> : <></>
+                btnState.val ? <h2>{props.answer}</h2> : <></>
             }
             <button className="button" onClick={clickhandler}>Show answer</button>
         </div>

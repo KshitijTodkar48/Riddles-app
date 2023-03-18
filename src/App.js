@@ -1,9 +1,12 @@
 import './App.css';
 import { getRiddles } from "./components/Riddles" ;
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useContext } from 'react';
 import Card from './components/Card';
+import { BtnContext } from './context/NextBtn';
 
 function App() {
+
+  const btnState = useContext(BtnContext) ;
 
   const [data,setData] = useState(null) ;
 
@@ -16,7 +19,9 @@ function App() {
   const nextRiddle=()=>{
     getRiddles().then((riddles)=>{
       console.log(riddles);
-      setData(riddles) ;}) ;
+      setData(riddles) ;
+      btnState.setVal(false);
+      console.log("context");}) ;
   }
 
   return (
