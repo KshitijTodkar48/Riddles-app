@@ -1,28 +1,18 @@
 import './App.css';
 import { getRiddles } from "./components/Riddles" ;
-import { useState,useEffect,useContext } from 'react';
-import Card from './components/Card';
-import { BtnContext } from './context/NextBtn';
+import { useEffect } from 'react';
+import { useBtn } from './context/NextBtn'; 
+import FlipCard from './components/FlipCard';
 
 function App() {
 
-  const btnState = useContext(BtnContext) ;
-
-  const [data,setData] = useState(null) ;
+  const btnState = useBtn() ;
 
   useEffect(()=>{
     getRiddles().then((riddles) => {
       console.log(riddles) ;
-      setData(riddles) ;}) ;
+      btnState.setData(riddles) ;}) ;
   },[])
-
-  const nextRiddle=()=>{
-    getRiddles().then((riddles)=>{
-      console.log(riddles);
-      setData(riddles) ;
-      btnState.setVal(false);
-      console.log("context");}) ;
-  }
 
   return (
     <>
@@ -35,9 +25,8 @@ function App() {
 
       <div className="App-container">
       {
-        data ? <>
-        <Card riddle = {data.riddle} answer = {data.answer}/>
-        <button className="button-next" onClick={nextRiddle}>Next riddle</button>
+        btnState.data ? <>
+        <FlipCard riddle = {btnState.data.riddle} answer = {btnState.data.answer}/>
         </> : <> </>
       } 
       </div>
