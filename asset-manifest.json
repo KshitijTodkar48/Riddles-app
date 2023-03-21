@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Riddles-app/static/css/main.0250b593.css",
+    "main.js": "/Riddles-app/static/js/main.a91064fa.js",
+    "index.html": "/Riddles-app/index.html",
+    "main.0250b593.css.map": "/Riddles-app/static/css/main.0250b593.css.map",
+    "main.a91064fa.js.map": "/Riddles-app/static/js/main.a91064fa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0250b593.css",
+    "static/js/main.a91064fa.js"
+  ]
+}
